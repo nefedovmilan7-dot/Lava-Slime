@@ -8,8 +8,8 @@ func _ready() -> void:
 
 func _on_play_button_pressed() -> void:
 	Global.play_sfx("click")
-	get_tree().change_scene_to_file("res://scenes/game.tscn")
+	Transition.change_scene("res://scenes/game.tscn")
 
 func _on_shop_button_pressed() -> void:
 	Global.play_sfx("click")
-	get_tree().change_scene_to_file("res://scenes/shop.tscn")
+	Transition.change_scene("res://scenes/shop.tscn")

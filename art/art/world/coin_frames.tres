@@ -1,0 +1,53 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://art/world/coin.png" id="1_ct4c8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fquxk"]
+atlas = ExtResource("1_ct4c8")
+region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhbyr"]
+atlas = ExtResource("1_ct4c8")
+region = Rect2(10, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1muv"]
+atlas = ExtResource("1_ct4c8")
+region = Rect2(20, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgm0e"]
+atlas = ExtResource("1_ct4c8")
+region = Rect2(30, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynans"]
+atlas = ExtResource("1_ct4c8")
+region = Rect2(40, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ri4b0"]
+atlas = ExtResource("1_ct4c8")
+region = Rect2(50, 0, 10, 10)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fquxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhbyr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1muv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgm0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynans")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ri4b0")
+}],
+"loop": 1,
+"name": &"spin",
+"speed": 10.0
+}]

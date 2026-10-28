@@ -1,8 +1,6 @@
 extends Node
 
-
 const SAVE_PATH := "user://save.cfg"
-
 
 const ACCESSORIES := {
 	"none": ["NO HAT", 0],
@@ -23,6 +21,7 @@ const SFX := {
 	"click": preload("res://audio/click.wav"),
 	"crumble": preload("res://audio/crumble.wav"),
 	"rock": preload("res://audio/rock.wav"),
+	"whoosh": preload("res://audio/whoosh.wav"),
 }
 
 var coins := 0
@@ -77,7 +76,7 @@ func save_game() -> void:
 func load_game() -> void:
 	var cfg := ConfigFile.new()
 	if cfg.load(SAVE_PATH) != OK:
-		return 
+		return
 	coins = cfg.get_value("player", "coins", 0)
 	best_height = cfg.get_value("player", "best_height", 0)
 	owned = cfg.get_value("player", "owned", ["none"])
@@ -89,13 +88,21 @@ func reset_save() -> void:
 	owned = ["none"]
 	equipped = "none"
 	save_game()
+
 func play_sfx(sfx_name: String, pitch := 1.0) -> void:
+	if not SFX.has(sfx_name):
+		push_warning("SFX not found in Global: '%s'" % sfx_name)
+		return
 	var p := AudioStreamPlayer.new()
 	p.stream = SFX[sfx_name]
 	p.pitch_scale = pitch
 	add_child(p)
 	p.play()
 	p.finished.connect(p.queue_free)
+
+func vibrate(ms := 12) -> void:
+	if OS.has_feature("mobile"):
+		Input.vibrate_handheld(ms)
 
 func _start_music() -> void:
 	var stream: AudioStreamWAV = preload("res://audio/music.wav")
@@ -105,5 +112,4 @@ func _start_music() -> void:
 	music.stream = stream
 	music.volume_db = -20.0
 	add_child(music)
-	music.play()
 	music.play()
