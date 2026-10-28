@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://xsypg56qnl61"]
+
+[ext_resource type="Script" uid="uid://c1ce1uj1vbmdx" path="res://scripts/shop_card.gd" id="1_pce6i"]
+
+[node name="ShopCard" type="PanelContainer" unique_id=1614004314]
+offset_right = 16.0
+offset_bottom = 16.0
+size_flags_horizontal = 3
+theme_type_variation = &"Card"
+script = ExtResource("1_pce6i")
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=447942517]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Preview" type="TextureRect" parent="VBox" unique_id=1764285511]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+expand_mode = 1
+
+[node name="NameLabel" type="Label" parent="VBox" unique_id=1565866650]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ActionButton" type="Button" parent="VBox" unique_id=9094740]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+
+[connection signal="pressed" from="VBox/ActionButton" to="." method="_on_action_button_pressed"]

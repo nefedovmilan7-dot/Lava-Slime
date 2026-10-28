@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://cp8ynksq4norl"]
+
+[ext_resource type="Texture2D" uid="uid://nwl57bgkiiq7" path="res://art/world/background.png" id="1_iywne"]
+[ext_resource type="Script" uid="uid://p8jseelcnscd" path="res://scripts/game.gd" id="1_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://cw718orpa8irq" path="res://scenes/player.tscn" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://cyrmt5ognmt3s" path="res://scenes/platform.tscn" id="2_lnu2h"]
+[ext_resource type="Script" uid="uid://03fjaod5ksen" path="res://scripts/game_camera.gd" id="4_p57ef"]
+[ext_resource type="Script" uid="uid://dot3owsfyyeoc" path="res://scripts/level_generator.gd" id="5_gee14"]
+[ext_resource type="Texture2D" uid="uid://cjtjnpasls55t" path="res://art/world/wall.png" id="5_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://cce761bqyi2bi" path="res://scenes/lava.tscn" id="6_gee14"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2icg"]
+size = Vector2(16, 64029.5)
+
+[node name="Game" type="Node2D" unique_id=1832458700]
+script = ExtResource("1_u5sy4")
+
+[node name="Backround" type="Parallax2D" parent="." unique_id=1358303956]
+scroll_scale = Vector2(1, 0.5)
+repeat_size = Vector2(0, 128)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Backround" unique_id=491087680]
+texture = ExtResource("1_iywne")
+centered = false
+
+[node name="Player" parent="." unique_id=1662281553 instance=ExtResource("1_yqjtg")]
+position = Vector2(90, 300)
+
+[node name="Ground" parent="." unique_id=1962928061 instance=ExtResource("2_lnu2h")]
+position = Vector2(90, 300)
+
+[node name="LevelGenerator" type="Node2D" parent="." unique_id=407536068 node_paths=PackedStringArray("camera", "lava")]
+script = ExtResource("5_gee14")
+camera = NodePath("../GameCamera")
+lava = NodePath("../Lava")
+
+[node name="GameCamera" type="Camera2D" parent="." unique_id=1464814015]
+position = Vector2(90, 160)
+script = ExtResource("4_p57ef")
+
+[node name="Lava" parent="." unique_id=653446276 node_paths=PackedStringArray("camera") instance=ExtResource("6_gee14")]
+position = Vector2(0, 360)
+camera = NodePath("../GameCamera")
+
+[node name="Walls" type="Node2D" parent="." unique_id=481757818]
+
+[node name="LeftWall" type="StaticBody2D" parent="Walls" unique_id=1353009540]
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/LeftWall" unique_id=679997126]
+texture_repeat = 2
+position = Vector2(4.5, -31690)
+scale = Vector2(1.4375, 1.0003124)
+texture = ExtResource("5_u5sy4")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 64000)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall" unique_id=685431893]
+position = Vector2(8, -31694)
+shape = SubResource("RectangleShape2D_n2icg")
+
+[node name="RighWall" type="StaticBody2D" parent="Walls" unique_id=1393667111]
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/RighWall" unique_id=585326105]
+texture_repeat = 2
+position = Vector2(175, -31689)
+scale = Vector2(1.375, 1.0003124)
+texture = ExtResource("5_u5sy4")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 64000)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RighWall" unique_id=1146920865]
+position = Vector2(172, -31693.75)
+shape = SubResource("RectangleShape2D_n2icg")

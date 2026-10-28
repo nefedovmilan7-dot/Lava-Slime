@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://dch5vc8upch5f"]
+
+[ext_resource type="Script" uid="uid://epxcg8srvmdc" path="res://scripts/coin.gd" id="1_i64fm"]
+[ext_resource type="Texture2D" uid="uid://cw3w88snv48fh" path="res://art/world/coin.png" id="2_11l1o"]
+[ext_resource type="Texture2D" uid="uid://bwa3tpk1g4wpf" path="res://art/world/light.png" id="3_11l1o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d14el"]
+atlas = ExtResource("2_11l1o")
+region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ikuy"]
+atlas = ExtResource("2_11l1o")
+region = Rect2(10, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnlwo"]
+atlas = ExtResource("2_11l1o")
+region = Rect2(20, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jig8b"]
+atlas = ExtResource("2_11l1o")
+region = Rect2(30, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmuha"]
+atlas = ExtResource("2_11l1o")
+region = Rect2(40, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfxoj"]
+atlas = ExtResource("2_11l1o")
+region = Rect2(50, 0, 10, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n2icg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d14el")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ikuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnlwo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jig8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmuha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfxoj")
+}],
+"loop": 1,
+"name": &"spin",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mlstk"]
+radius = 6.0
+
+[node name="Coin" type="Area2D" unique_id=698336379]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_i64fm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=306939917]
+sprite_frames = SubResource("SpriteFrames_n2icg")
+animation = &"spin"
+autoplay = "spin"
+frame_progress = 0.9756853
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2055397818]
+shape = SubResource("CircleShape2D_mlstk")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1945223812]
+color = Color(0.8, 0.7490196, 0, 1)
+texture = ExtResource("3_11l1o")
+texture_scale = 2.0

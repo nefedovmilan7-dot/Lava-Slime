@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bw0ljhow3oa7b"]
+
+[ext_resource type="Script" uid="uid://buffrrf6qd1j7" path="res://scripts/crumble_platform.gd" id="1_7nxym"]
+[ext_resource type="Texture2D" uid="uid://bsk2rq22rkpct" path="res://art/world/platform_crumble.png" id="2_j6png"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ry04r"]
+size = Vector2(48, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2icg"]
+size = Vector2(48, 8)
+
+[node name="CrumblePlatform" type="StaticBody2D" unique_id=1962928061]
+collision_mask = 0
+script = ExtResource("1_7nxym")
+
+[node name="Look" type="NinePatchRect" parent="." unique_id=1726273843]
+offset_left = -24.0
+offset_right = 24.0
+offset_bottom = 8.0
+texture = ExtResource("2_j6png")
+patch_margin_left = 6
+patch_margin_right = 6
+axis_stretch_horizontal = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=216737024]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_ry04r")
+one_way_collision = true
+
+[node name="Detector" type="Area2D" parent="." unique_id=2089798859]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector" unique_id=183677646]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_n2icg")

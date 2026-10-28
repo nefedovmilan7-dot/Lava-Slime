@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cw718orpa8irq"]
+
+[ext_resource type="Script" uid="uid://wj3k6sgsl7vu" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="SpriteFrames" uid="uid://5duvbb4ittbo" path="res://art/slime/slime_none.tres" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://bwa3tpk1g4wpf" path="res://art/world/light.png" id="3_qhqgy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tuyoq"]
+size = Vector2(14, 14)
+
+[node name="Player" type="CharacterBody2D" unique_id=1662281553]
+collision_layer = 2
+script = ExtResource("1_3vyb7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=19513544]
+sprite_frames = ExtResource("2_g2els")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.96487004
+offset = Vector2(0, -16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=449184622]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_tuyoq")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=22387416]
+position = Vector2(0, -8)
+color = Color(0.7176471, 1, 0.6901961, 1)
+energy = 0.6
+texture = ExtResource("3_qhqgy")
+texture_scale = 2.0

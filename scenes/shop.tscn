@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://clmwikwuutdrv"]
+
+[ext_resource type="Script" uid="uid://c65805q04k1y8" path="res://scripts/shop.gd" id="1_1l46r"]
+[ext_resource type="Texture2D" uid="uid://nwl57bgkiiq7" path="res://art/world/background.png" id="2_032fp"]
+[ext_resource type="Texture2D" uid="uid://bd5g3tng8t1qm" path="res://art/ui/coin_icon.png" id="3_2fc2m"]
+
+[node name="Shop" type="Control" unique_id=1016952347]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1l46r")
+
+[node name="Backround" type="TextureRect" parent="." unique_id=1903921960]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_032fp")
+stretch_mode = 1
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=1050177764]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="VBox" type="VBoxContainer" parent="Margin" unique_id=1816598177]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Margin/VBox" unique_id=606411024]
+layout_mode = 2
+theme_type_variation = &"BigLabel"
+text = "SLIME SHOP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CoinRow" type="HBoxContainer" parent="Margin/VBox" unique_id=1457734865]
+layout_mode = 2
+alignment = 1
+
+[node name="CoinIcon" type="TextureRect" parent="Margin/VBox/CoinRow" unique_id=1540870981]
+layout_mode = 2
+texture = ExtResource("3_2fc2m")
+stretch_mode = 3
+
+[node name="CoinsLabel" type="Label" parent="Margin/VBox/CoinRow" unique_id=907635670]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Scroll" type="ScrollContainer" parent="Margin/VBox" unique_id=1554384547]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Grid" type="GridContainer" parent="Margin/VBox/Scroll" unique_id=1060147786]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 2
+
+[node name="BackButton" type="Button" parent="Margin/VBox" unique_id=1830371881]
+layout_mode = 2
+text = "BACK
+"
+
+[connection signal="pressed" from="Margin/VBox/BackButton" to="." method="_on_back_button_pressed"]

@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://cas3ee2v17db8"]
+
+[ext_resource type="Script" uid="uid://da8uj1rdcsc37" path="res://scripts/main_menu.gd" id="1_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://nwl57bgkiiq7" path="res://art/world/background.png" id="2_wu84c"]
+[ext_resource type="SpriteFrames" uid="uid://5duvbb4ittbo" path="res://art/slime/slime_none.tres" id="3_8ln24"]
+[ext_resource type="Texture2D" uid="uid://cpamw766g6n6b" path="res://art/world/lava.png" id="4_wu84c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ln24"]
+atlas = ExtResource("4_wu84c")
+region = Rect2(0, 0, 32, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtw2f"]
+atlas = ExtResource("4_wu84c")
+region = Rect2(0, 12, 32, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa1go"]
+atlas = ExtResource("4_wu84c")
+region = Rect2(0, 24, 32, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbmy8"]
+atlas = ExtResource("4_wu84c")
+region = Rect2(0, 36, 32, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mlstk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ln24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtw2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oa1go")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbmy8")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="MainMenu" type="Control" unique_id=1736535930]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bqqt6")
+
+[node name="Backround" type="TextureRect" parent="." unique_id=1964602427]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wu84c")
+stretch_mode = 1
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=1036432473]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_right = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Title" type="Label" parent="VBox" unique_id=1579727389]
+layout_mode = 2
+theme_type_variation = &"TitleLabel"
+text = "LAVA
+SLIME"
+horizontal_alignment = 1
+
+[node name="SlimeSpot" type="Control" parent="VBox" unique_id=546142485]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+
+[node name="Slime" type="AnimatedSprite2D" parent="VBox/SlimeSpot" unique_id=1132484376]
+unique_name_in_owner = true
+position = Vector2(66, 26)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("3_8ln24")
+animation = &"fall"
+autoplay = "fall"
+
+[node name="PlayButton" type="Button" parent="VBox" unique_id=494419141]
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+text = "PLAY
+"
+
+[node name="ShopButton" type="Button" parent="VBox" unique_id=1815254764]
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+text = "SHOP"
+
+[node name="BestLabel" type="Label" parent="VBox" unique_id=1687975094]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CoinsLabel" type="Label" parent="VBox" unique_id=1695400209]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=840415272]
+position = Vector2(90, 297)
+scale = Vector2(5.6, 5.26)
+sprite_frames = SubResource("SpriteFrames_mlstk")
+autoplay = "default"
+frame_progress = 0.9184089
+
+[connection signal="pressed" from="VBox/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBox/ShopButton" to="." method="_on_shop_button_pressed"]

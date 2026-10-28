@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://cce761bqyi2bi"]
+
+[ext_resource type="Script" uid="uid://dnhbbe3cmugea" path="res://scripts/lava.gd" id="1_dw3wf"]
+[ext_resource type="Texture2D" uid="uid://cpamw766g6n6b" path="res://art/world/lava.png" id="2_snnrc"]
+[ext_resource type="Texture2D" uid="uid://bwa3tpk1g4wpf" path="res://art/world/light.png" id="3_snnrc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+size = Vector2(180, 700)
+
+[sub_resource type="Gradient" id="Gradient_snnrc"]
+colors = PackedColorArray(1, 0.39215687, 0.36078432, 1, 1, 0.89411765, 0.36078432, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mlstk"]
+gradient = SubResource("Gradient_snnrc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n2icg"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(90, 2, 1)
+direction = Vector3(-1, 25, 0)
+initial_velocity_min = 8.0
+initial_velocity_max = 24.0
+gravity = Vector3(0, -45, 0)
+scale_max = 2.0
+color_ramp = SubResource("GradientTexture1D_mlstk")
+
+[node name="Lava" type="Area2D" unique_id=653446276]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_dw3wf")
+
+[node name="Body" type="ColorRect" parent="." unique_id=1292004142]
+offset_left = -8.0
+offset_top = 11.0
+offset_right = 188.0
+offset_bottom = 711.0
+mouse_filter = 2
+color = Color(0.72156864, 0.13333334, 0.11764706, 1)
+
+[node name="Surface" type="Sprite2D" parent="." unique_id=703404745]
+texture_repeat = 2
+position = Vector2(-8, 0)
+texture = ExtResource("2_snnrc")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 196, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=948812065]
+position = Vector2(90, 356)
+shape = SubResource("RectangleShape2D_g2els")
+
+[node name="Glow" type="PointLight2D" parent="." unique_id=23211030]
+position = Vector2(90, 0)
+color = Color(1, 0.5411765, 0.23921569, 1)
+energy = 1.4
+texture = ExtResource("3_snnrc")
+texture_scale = 6.0
+
+[node name="Embers" type="GPUParticles2D" parent="." unique_id=1394942033]
+position = Vector2(90, 4)
+amount = 40
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_n2icg")

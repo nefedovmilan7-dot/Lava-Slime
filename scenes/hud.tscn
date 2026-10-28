@@ -1,0 +1,183 @@
+[gd_scene format=3 uid="uid://iln47goqwxmp"]
+
+[ext_resource type="Script" uid="uid://cyoj3o5y3c61o" path="res://scripts/hud.gd" id="1_5ysmq"]
+[ext_resource type="Texture2D" uid="uid://bd5g3tng8t1qm" path="res://art/ui/coin_icon.png" id="2_6fi6k"]
+[ext_resource type="Texture2D" uid="uid://2xpmq12r1uvy" path="res://art/ui/pause.png" id="3_uo2fv"]
+[ext_resource type="Texture2D" uid="uid://csvf5gu5wusf0" path="res://art/ui/touch_left.png" id="4_0i1j5"]
+[ext_resource type="Texture2D" uid="uid://d4l4y8o37fh45" path="res://art/ui/touch_left_pressed.png" id="5_mphia"]
+[ext_resource type="Texture2D" uid="uid://m3a0bbujammh" path="res://art/ui/touch_right.png" id="6_0m4u7"]
+[ext_resource type="Texture2D" uid="uid://wcbbrkhrvt41" path="res://art/ui/touch_right_pressed.png" id="7_apjy4"]
+[ext_resource type="Texture2D" uid="uid://4w7e8l3fndsv" path="res://art/ui/touch_jump.png" id="8_5n1hp"]
+[ext_resource type="Texture2D" uid="uid://4l1b3man3uvr" path="res://art/ui/touch_jump_pressed.png" id="9_eld54"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1863006811]
+process_mode = 3
+script = ExtResource("1_5ysmq")
+
+[node name="TopBar" type="MarginContainer" parent="." unique_id=201831490]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 9.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 3
+
+[node name="Hbox" type="HBoxContainer" parent="TopBar" unique_id=1083426244]
+layout_mode = 2
+
+[node name="HeightLabel" type="Label" parent="TopBar/Hbox" unique_id=1229608329]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"BigLabel"
+
+[node name="Spacer" type="Control" parent="TopBar/Hbox" unique_id=1338573317]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CoinIcon" type="TextureRect" parent="TopBar/Hbox" unique_id=613434563]
+layout_mode = 2
+texture = ExtResource("2_6fi6k")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="CoinLabel" type="Label" parent="TopBar/Hbox" unique_id=989147278]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PauseButton" type="TextureButton" parent="TopBar/Hbox" unique_id=293579359]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+texture_normal = ExtResource("3_uo2fv")
+stretch_mode = 3
+
+[node name="PausePanel" type="PanelContainer" parent="." unique_id=1539371754]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.5
+offset_right = 32.0
+offset_bottom = 32.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="PausePanel" unique_id=845778957]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="PausePanel/VBox" unique_id=402049036]
+layout_mode = 2
+theme_type_variation = &"BigLabel"
+text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PausePanel/VBox" unique_id=1742205087]
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+text = "RESUME"
+
+[node name="QuitButton" type="Button" parent="PausePanel/VBox" unique_id=1022663412]
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+text = "MENU"
+
+[node name="GameOverPanel" type="PanelContainer" parent="." unique_id=1565374269]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -52.0
+offset_right = 39.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="GameOverPanel" unique_id=101418981]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="GameOverPanel/VBox" unique_id=1240749245]
+layout_mode = 2
+theme_type_variation = &"BigLabel"
+text = "YOU MELTED!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FinalHeight" type="Label" parent="GameOverPanel/VBox" unique_id=1598752418]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BestLabel" type="Label" parent="GameOverPanel/VBox" unique_id=1667666415]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RunCoins" type="Label" parent="GameOverPanel/VBox" unique_id=663435162]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RetryButton" type="Button" parent="GameOverPanel/VBox" unique_id=1781931285]
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+text = "TRY AGAIN"
+
+[node name="MenuButton" type="Button" parent="GameOverPanel/VBox" unique_id=301255824]
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+text = "MENU"
+
+[node name="TouchControls" type="Control" parent="." unique_id=2139791656]
+layout_mode = 3
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Left" type="TouchScreenButton" parent="TouchControls" unique_id=1148325277]
+position = Vector2(4, 4)
+texture_normal = ExtResource("4_0i1j5")
+texture_pressed = ExtResource("5_mphia")
+passby_press = true
+action = "move_left"
+
+[node name="Right" type="TouchScreenButton" parent="TouchControls" unique_id=748989667]
+position = Vector2(40, 4)
+texture_normal = ExtResource("6_0m4u7")
+texture_pressed = ExtResource("7_apjy4")
+passby_press = true
+action = "move_right"
+
+[node name="Jump" type="TouchScreenButton" parent="TouchControls" unique_id=1561020364]
+position = Vector2(144, 4)
+texture_normal = ExtResource("8_5n1hp")
+texture_pressed = ExtResource("9_eld54")
+action = "jump"
+
+[connection signal="pressed" from="TopBar/Hbox/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="PausePanel/VBox/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PausePanel/VBox/QuitButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="GameOverPanel/VBox/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="GameOverPanel/VBox/MenuButton" to="." method="_on_menu_button_pressed"]
